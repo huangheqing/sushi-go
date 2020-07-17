@@ -18,7 +18,7 @@ $ npm install firebase
 
 ## How to deploy?
 ```
-$ firebase longin
+$ firebase login
 $ firebase init
 $ firebase deploy
 ```
