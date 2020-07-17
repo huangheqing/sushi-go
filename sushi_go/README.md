@@ -25,6 +25,9 @@ $ firebase deploy
 
 your deployed web app on firebase -> https://sushi-go-d7771.web.app/
 
+
+## [Sushi GO game guide](https://www.ultraboardgames.com/sushi-go/game-rules.php)
+
 - [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
 - [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
 
