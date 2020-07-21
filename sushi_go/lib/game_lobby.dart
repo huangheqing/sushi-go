@@ -1,27 +1,35 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:sushi_go/room.dart';
+import 'objects/game.dart';
 
-class Game extends StatelessWidget {
-  String user_name;
+class GameLobby extends StatelessWidget {
+  String userName;
 
-  Game(String name) {
+  GameLobby(String name) {
     //If there is a block of code.
     // Constructor body
-    user_name = name;
+    userName = name;
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Welcome to Sushi go' + user_name),
+        title: Text('Welcome to Sushi go' + userName),
       ),
-      body: Center(child: new BookList()),
+      body: Center(child: new BookList(userName)),
     );
   }
 }
 
 class BookList extends StatelessWidget {
+  String userName;
+
+  BookList(String _userName) {
+    userName = _userName;
+  }
+
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
@@ -38,6 +46,21 @@ class BookList extends StatelessWidget {
                 return new ListTile(
                   title: new Text(document['room_name']),
                   subtitle: new Text(document['owner']),
+                  onTap: () {
+                    /*Join the room*/
+                    Firestore.instance
+                        .collection('sushi-go')
+                        .document(document.documentID)
+                        .updateData({
+                      'players': FieldValue.arrayUnion([userName])
+                    });
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              Room(Game.fromSnapshot(document), userName)),
+                    );
+                  },
                 );
               }).toList(),
             );

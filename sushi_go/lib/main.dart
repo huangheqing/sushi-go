@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'game.dart';
+import 'game_lobby.dart';
 
 void main() => runApp(MyApp());
 
@@ -51,7 +51,7 @@ class _MyCustomFormState extends State<MyCustomForm> {
         onPressed: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => Game(myController.text)),
+            MaterialPageRoute(builder: (context) => GameLobby(myController.text)),
           );
         },
         tooltip: 'submit your name',
