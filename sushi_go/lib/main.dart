@@ -42,8 +42,22 @@ class _MyCustomFormState extends State<MyCustomForm> {
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: TextField(
-          controller: myController,
-        ),
+            controller: myController,
+            decoration: InputDecoration(
+              filled: true,
+              fillColor: Colors.white,
+              hintText: 'Type your player name and click the "+" button',
+              contentPadding:
+                  const EdgeInsets.only(left: 14.0, bottom: 8.0, top: 8.0),
+              focusedBorder: OutlineInputBorder(
+                borderSide: BorderSide(color: Colors.white),
+                borderRadius: BorderRadius.circular(25.7),
+              ),
+              enabledBorder: UnderlineInputBorder(
+                borderSide: BorderSide(color: Colors.white),
+                borderRadius: BorderRadius.circular(25.7),
+              ),
+            )),
       ),
       floatingActionButton: FloatingActionButton(
         // When the user presses the button, show an alert dialog containing
@@ -51,11 +65,12 @@ class _MyCustomFormState extends State<MyCustomForm> {
         onPressed: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => GameLobby(myController.text)),
+            MaterialPageRoute(
+                builder: (context) => GameLobby(myController.text)),
           );
         },
         tooltip: 'submit your name',
-        child: Icon(Icons.text_fields),
+        child: Icon(Icons.add),
       ),
     );
   }

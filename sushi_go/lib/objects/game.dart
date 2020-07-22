@@ -11,6 +11,15 @@ class Game {
   List<String> players = new List<String>();
   List<Round> rounds = new List<Round>();
 
+  Game(String id, String _roomName, String ownerName, bool inGame,
+      List<String> playersList) {
+    documentID = id;
+    roomName = _roomName;
+    owner = ownerName;
+    isInGame = inGame;
+    players = playersList;
+  }
+
   Game.fromSnapshot(DocumentSnapshot snapshot)
       : documentID = snapshot.documentID,
         roomName = snapshot['room_name'],
