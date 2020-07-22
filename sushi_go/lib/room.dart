@@ -21,23 +21,23 @@ class Room extends StatelessWidget {
         title: Text('Welcome to game: ' + game.roomName),
       ),
       body: Center(
-        // if isOwner is true, then this user is the host of this room,
-        // He has the start game button appeared
-        // Other user does not have the start button but they have the ready button
+          // if isOwner is true, then this user is the host of this room,
+          // He has the start game button appeared
+          // Other user does not have the start button but they have the ready button
           child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              const SizedBox(height: 30),
-              RaisedButton(
-                onPressed: () {
-                  // Start game or state ready
-                },
-                child: Text(isOwner ? 'Start game' : 'Ready', style: TextStyle(fontSize: 20)),
-              ),
-              const SizedBox(height: 30),
-            ],
-          )
-      ),
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          const SizedBox(height: 30),
+          RaisedButton(
+            onPressed: () {
+              // Start game or state ready
+            },
+            child: Text(isOwner ? 'Start game' : 'Ready',
+                style: TextStyle(fontSize: 20)),
+          ),
+          const SizedBox(height: 30),
+        ],
+      )),
     );
   }
 }
