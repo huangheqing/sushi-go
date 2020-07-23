@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-
+import 'sushi_go_basic_menu_game.dart';
 import 'objects/game.dart';
 
 class Room extends StatelessWidget {
@@ -31,6 +31,15 @@ class Room extends StatelessWidget {
           RaisedButton(
             onPressed: () {
               // Start game or state ready
+              Firestore.instance
+                  .collection('sushi-go')
+                  .document(game.documentID)
+                  .updateData({'in_game': true});
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => BasicMenuGame(game, userName)),
+              );
             },
             child: Text(isOwner ? 'Start game' : 'Ready',
                 style: TextStyle(fontSize: 20)),
